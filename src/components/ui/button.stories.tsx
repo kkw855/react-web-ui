@@ -1,9 +1,10 @@
 // noinspection JSUnusedGlobalSymbols
 
 import { Smile } from 'lucide-react'
+import { fn } from 'storybook/test'
 
 import { Button } from './button'
-import { fn } from 'storybook/test'
+
 import type { Meta, StoryObj } from '@storybook/react-vite'
 
 const meta = {
