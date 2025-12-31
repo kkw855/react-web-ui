@@ -1,3 +1,5 @@
+// noinspection JSUnusedGlobalSymbols
+
 import type { Preview } from '@storybook/react-vite'
 
 import '@/globals.css'

@@ -1,21 +1,26 @@
-FROM oven/bun:1 AS builder
+# Stage 1: Build the React application
+FROM node:24.12.0-alpine3.22 as build
 
 WORKDIR /app
 
+COPY package*.json ./
+
+RUN npm install
+
 COPY . .
 
-RUN bun install --frozen-lockfile
+# RUN npm run build
+RUN npm run build-storybook
 
-RUN bun run build-storybook
+# Stage 2: Serve the application with Nginx
+FROM nginx:alpine as production
 
-# Use a lightweight web server to serve the static Storybook build
-FROM nginx:alpine
+# Copy the built React app to Nginx's default static file directory
+COPY --from=build /app/storybook-static /usr/share/nginx/html
 
-# Copy the built Storybook assets from the builder stage
-COPY --from=builder /app/storybook-static /usr/share/nginx/html
+# Copy a custom Nginx configuration file
+# COPY nginx.conf /etc/nginx/nginx.conf
 
-# Expose the port Nginx will listen on
 EXPOSE 80
 
-# Command to start Nginx
 CMD ["nginx", "-g", "daemon off;"]
