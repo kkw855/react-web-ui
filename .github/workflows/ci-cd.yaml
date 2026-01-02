@@ -8,24 +8,32 @@ on:
       - 'main'
 
 permissions:
-  id-token: write # Required for OIDC
-  contents: read
+  contents: write # Required for semantic-release to push tags/releases
+  issues: write # Required for semantic-release to comment on issues
+  pull-requests: write # Required for semantic-release to comment on PRs
+  id-token: write # Required for OIDC trusted publishing
 
 jobs:
   build-and-push:
     runs-on: arc-runner-set
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
+        with:
+          # Fetch all history so semantic-release can analyze commits
+          fetch-depth: 0
 
-      - name: Publish package to NPMM
+      - name: Publish package to NPM
         uses: actions/setup-node@v4
         with:
           node-version: '24.12.0' # Use your desired Node version
           registry-url: 'https://registry.npmjs.org' # Important for npm publish
 
-      - name: Publish package to npm
-        run: npm publish # The action uses OIDC to authenticate
+      - name: Run semantic-release
+        run: npm run semantic-release
+        env:
+          # A GitHub token is still needed for GitHub API interactions (tags, releases)
+          GITHUB_TOKEN: ${{ secrets.GITOPS_PAT }}
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
