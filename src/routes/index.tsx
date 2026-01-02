@@ -11,6 +11,7 @@ function Home() {
       <h1 className="text-2xl">Home</h1>
       <Button>Button</Button>
       <Button>Button 2</Button>
+      <Button>Button 3</Button>
     </div>
   )
 }
