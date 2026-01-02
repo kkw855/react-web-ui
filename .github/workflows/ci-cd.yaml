@@ -8,7 +8,7 @@ on:
       - 'main'
 jobs:
   build-and-push:
-    runs-on: self-hosted
+    runs-on: arc-runner-set
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
