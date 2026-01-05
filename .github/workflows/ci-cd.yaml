@@ -29,6 +29,9 @@ jobs:
           node-version: '24.12.0' # Use your desired Node version
           registry-url: 'https://registry.npmjs.org' # Important for npm publish
 
+      - name: Install dependencies
+        run: npm clean-install
+
       - name: Run semantic-release
         run: npm run semantic-release
         env:
