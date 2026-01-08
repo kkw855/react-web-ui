@@ -1,6 +1,6 @@
 {
   "name": "@endsoul/react-web-ui",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "private": false,
   "module": "src/index.tsx",
   "type": "module",
