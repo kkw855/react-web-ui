@@ -15,6 +15,7 @@ jobs:
       contents: write # Required for semantic-release to push tags/releases
       issues: write # Required for semantic-release to comment on issues
       pull-requests: write # Required for semantic-release to comment on PRs
+      id-token: write # Required for OIDC trusted publishing
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
