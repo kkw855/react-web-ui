@@ -1,6 +1,6 @@
 {
-  "name": "@endsoul/test1",
-  "version": "1.0.11",
+  "name": "@endsoul/react-ui",
+  "version": "1.0.0",
   "private": false,
   "main": "dist/index.js",
   "module": "dist/index.mjs",
