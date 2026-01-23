@@ -35,6 +35,7 @@ jobs:
         env:
           # A GitHub token is still needed for GitHub API interactions (tags, releases)
           GITHUB_TOKEN: ${{ secrets.GITOPS_PAT }}
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run semantic-release
 
       - name: Login to GitHub Container Registry
