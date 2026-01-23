@@ -8,7 +8,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "files": [ "dist" ],
+  "files": [
+    "dist"
+  ],
   "scripts": {
     "build": "rollup -c --bundleConfigAsCjs",
     "storybook": "storybook dev -p 6006",
