@@ -1,0 +1,33 @@
+{
+  "compilerOptions": {
+    // Typescript를 ES5 버전 Javascript 파일로 변환합니다.
+    "target": "es5",
+    // Browser에서 작동하지 않으면 "dom"은 필요 없습니다.
+    "lib": ["dom", "dom.iterable", "esnext"],
+    // Typescript 컴파일러가 Typescript, Javascript 파일을 함께 처리할 수 있도록 합니다.
+    // 프로젝트에 Javascript 파일이 있을 때 사용합니다.
+    "allowJs": true,
+    // node_modules 패키지들에 타입 검사를 하지 않습니다.
+    // 타입이 없는 라이브러리를 사용할 때 유용합니다.
+    "skipLibCheck": true,
+    // 컴파일러가 ES 모듈(mjs)을 import 가능하게 합니다.
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "strict": true,
+    // 모든 파일 이름이 Camel Case 또는 Pascal Case를 사용하도록 강제합니다.
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    // Javascript로 변환할 때 esnext import, export 문을 사용하게 합니다.
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "paths": {
+      "@/*": ["./src/*"]
+    },
+    "outDir": "dist"
+  },
+  "include": ["src"]
+}
