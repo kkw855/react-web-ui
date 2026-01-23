@@ -12,7 +12,9 @@ jobs:
     # arc-runner-set: Kubernetes에서 Runner를 실행합니다.
     runs-on: arc-runner-set
     permissions:
-      contents: write # Required for creating releases/tags with GITHUB_TOKEN
+      contents: write # Required for semantic-release to push tags/releases
+      issues: write # Required for semantic-release to comment on issues
+      pull-requests: write # Required for semantic-release to comment on PRs
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -22,6 +24,8 @@ jobs:
         with:
           node-version: '24.12.0' # Use your desired Node version
           registry-url: 'https://registry.npmjs.org' # Important for npm publish
+          # Optional: specify scope if your packages use a scope prefix (e.g., @myorg)
+          scope: '@endsoul'
       - name: Install dependencies
         run: npm clean-install
       - name: Run semantic-release
