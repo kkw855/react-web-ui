@@ -15,14 +15,18 @@ jobs:
       contents: write # Required for semantic-release to push tags/releases
       issues: write # Required for semantic-release to comment on issues
       pull-requests: write # Required for semantic-release to comment on PRs
+      id-token: write # **Crucial for OIDC Trusted Publishing**
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+        with:
+          fetch-depth: 0 # Required for semantic-release to analyze all commits
 
       - name: Publish package to NPM
         uses: actions/setup-node@v4
         with:
           node-version: '24.12.0' # Use your desired Node version
+          registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies
         run: npm clean-install
@@ -31,7 +35,6 @@ jobs:
         env:
           # A GitHub token is still needed for GitHub API interactions (tags, releases)
           GITHUB_TOKEN: ${{ secrets.GITOPS_PAT }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run semantic-release
 
       - name: Login to GitHub Container Registry
