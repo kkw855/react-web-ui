@@ -27,14 +27,14 @@ jobs:
         with:
           node-version: '24.12.0' # Use your desired Node version
           registry-url: 'https://registry.npmjs.org'
+          scope: '@endsoul'
 
       - name: Install dependencies
         run: npm clean-install
 
       - name: Run semantic-release
         env:
-          # A GitHub token is still needed for GitHub API interactions (tags, releases)
-          GITHUB_TOKEN: ${{ secrets.GITOPS_PAT }}
+          GITHUB_TOKEN: ${{ secrets.GITOPS_PAT }} # A GitHub token is still needed for GitHub API interactions (tags, releases)
           NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm run semantic-release
 
