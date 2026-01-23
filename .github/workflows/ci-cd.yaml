@@ -29,7 +29,6 @@ jobs:
 
       - name: Install dependencies
         run: npm clean-install
-
       - name: Run semantic-release
         env:
           GITHUB_TOKEN: ${{ secrets.GITOPS_PAT }} # A GitHub token is still needed for GitHub API interactions (tags, releases)
