@@ -1,3 +1,10 @@
+# [1.6.0](https://github.com/kkw855/react-web-ui/compare/v1.5.0...v1.6.0) (2026-01-26)
+
+
+### Features
+
+* 8 ([58cb7d2](https://github.com/kkw855/react-web-ui/commit/58cb7d26bd2d07de96334e89f8679ec8ecc91871))
+
 # [1.5.0](https://github.com/kkw855/react-web-ui/compare/v1.4.0...v1.5.0) (2026-01-26)
 
 
